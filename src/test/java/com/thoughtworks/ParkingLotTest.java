@@ -50,7 +50,7 @@ class ParkingLotTest {
     }
 
     @Test
-    void givenParkingLotWithOneCapacity_WhenUnParkOneVehicleWithoutPark_ThenShouldNotBeAbleToUnParkIt() throws ParkingLotException {
+    void givenParkingLot_WhenUnParkOneVehicleWithoutPark_ThenShouldNotBeAbleToUnParkIt() throws ParkingLotException {
         ParkingLot parkingLot = new ParkingLot(1);
 
         Object vehicle = new Object();
@@ -58,5 +58,4 @@ class ParkingLotTest {
             parkingLot.unPark(vehicle);
         });
     }
-
 }
