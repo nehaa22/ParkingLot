@@ -21,7 +21,7 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Object vehicle = new Object();
 
-        assertTrue(parkingLot.park(vehicle));
+        parkingLot.park(vehicle);
         Assertions.assertThrows(ParkingLotException.class, () -> {
             parkingLot.park(vehicle);
         });
@@ -32,7 +32,7 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
 
         Object vehicle = new Object();
-        assertTrue(parkingLot.park(vehicle));
+        parkingLot.park(vehicle);
 
         Assertions.assertThrows(ParkingLotException.class, () -> {
             parkingLot.park(vehicle);
