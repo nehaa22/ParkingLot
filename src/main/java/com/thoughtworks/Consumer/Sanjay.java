@@ -52,7 +52,8 @@ public class Sanjay {
     }
 
     public static void main(String[] args) throws ParkingLotException {
+        Owner owner = new Owner();
 
-        park(new ParkingLot(2), new ParkingLot(3));
+        park(new ParkingLot(2,owner), new ParkingLot(3,owner));
     }
 }
