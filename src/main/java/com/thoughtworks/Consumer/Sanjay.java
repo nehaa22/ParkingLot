@@ -40,6 +40,15 @@ public class Sanjay {
         parkingLotTwo.park(C);
         System.out.println("Added car c in two " + C);
 
+      Object vehical= parkingLotTwo.unPark(C);
+      System.out.println("Unparked " + C);
+
+      try {
+          Object vehical2 = parkingLotTwo.unPark(C);
+      }catch (ParkingLotException e){
+          System.out.println("exception :"+"  "+e.getMessage());
+      }
+
     }
 
     public static void main(String[] args) throws ParkingLotException {

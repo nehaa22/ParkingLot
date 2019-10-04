@@ -33,13 +33,13 @@ public class ParkingLot {
         return parkObject.size() < capacity;
     }
 
-    public boolean unPark(Object object) {
+    public Object unPark(Object object) throws ParkingLotException {
         if (isAlreadyParked(object)) {
-            return parkObject.remove(object);
+            parkObject.remove(object);
+            return object;
         }
-        return false;
+        throw new ParkingLotException("vehical not found");
     }
-
 }
 
 
