@@ -19,6 +19,13 @@ class ParkingLotTest {
             notifyMessage = true;
             counter++;
         }
+
+        @Override
+        public  void  informFreeSpace(){
+            notifyMessage =  true;
+            freeSpace++;
+
+        }
     }
 
     @Test
@@ -106,9 +113,10 @@ class ParkingLotTest {
 
         parkingLot.park(vehicleOne);
         parkingLot.park(vehicleTwo);
-
-        assertTrue(dummyOwner.notifyMessage);
         Assertions.assertEquals(1,dummyOwner.counter);
+
+        parkingLot.unPark(vehicleOne);
+        Assertions.assertEquals(1,dummyOwner.freeSpace);
     }
 
 

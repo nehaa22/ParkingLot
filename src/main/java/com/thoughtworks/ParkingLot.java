@@ -39,12 +39,15 @@ public class ParkingLot {
         return parkObject.size() < capacity;
     }
 
-    public  boolean isFull()
+    private boolean isFull()
     {return parkObject.size() == capacity;}
 
     public Object unPark(Object object) throws ParkingLotException {
         if (isAlreadyParked(object)) {
             parkObject.remove(object);
+            if(parkObject.size() == capacity-1) {
+                owner.informFreeSpace();
+            }
             return object;
         }
         throw new ParkingLotException("vehical not found");
