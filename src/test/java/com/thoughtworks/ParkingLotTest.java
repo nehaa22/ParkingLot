@@ -12,9 +12,10 @@ class ParkingLotTest {
 
         private boolean notifyMessage =false;
         int counter = 0;
+        int freeSpace = 0;
 
         @Override
-        public  void inform(){
+        public  void informFullSpace(){
             notifyMessage = true;
             counter++;
         }
@@ -82,6 +83,21 @@ class ParkingLotTest {
 
     @Test
     void givenParkingLotWithFullCapacity_WhenPark_ThenShouldNotifyOwner() throws ParkingLotException {
+        DummyOwner dummyOwner = new DummyOwner();
+        ParkingLot parkingLot = new ParkingLot(2,dummyOwner);
+
+        Object vehicleOne = new Object();
+        Object vehicleTwo = new Object();
+
+        parkingLot.park(vehicleOne);
+        parkingLot.park(vehicleTwo);
+
+        assertTrue(dummyOwner.notifyMessage);
+        Assertions.assertEquals(1,dummyOwner.counter);
+    }
+
+    @Test
+    void givenParkingLotWithFullCapacity_WhenParkOneCar_ThenShouldNotifyOwnerThatSpaceIsAvailable() throws ParkingLotException {
         DummyOwner dummyOwner = new DummyOwner();
         ParkingLot parkingLot = new ParkingLot(2,dummyOwner);
 

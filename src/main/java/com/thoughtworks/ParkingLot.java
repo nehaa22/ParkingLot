@@ -25,7 +25,7 @@ public class ParkingLot {
             }
             parkObject.add(object);
             if(isFull())
-            {owner.inform();}
+            {owner.informFullSpace();}
             return true;
         }
         throw new ParkingLotException("Parking lot full");
