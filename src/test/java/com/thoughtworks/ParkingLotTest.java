@@ -80,5 +80,20 @@ class ParkingLotTest {
         });
     }
 
+    @Test
+    void givenParkingLotWithFullCapacity_WhenPark_ThenShouldNotifyOwner() throws ParkingLotException {
+        DummyOwner dummyOwner = new DummyOwner();
+        ParkingLot parkingLot = new ParkingLot(2,dummyOwner);
+
+        Object vehicleOne = new Object();
+        Object vehicleTwo = new Object();
+
+        parkingLot.park(vehicleOne);
+        parkingLot.park(vehicleTwo);
+
+        assertTrue(dummyOwner.notifyMessage);
+        Assertions.assertEquals(1,dummyOwner.counter);
+    }
+
 
 }
