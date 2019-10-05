@@ -1,7 +1,5 @@
 package com.thoughtworks;
 
-import com.thoughtworks.Consumer.IOwner;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +9,7 @@ public class ParkingLot {
     private int capacity;
     private IOwner IOwner;
 
-    public ParkingLot(int capacity, IOwner IOwner) {
+    public ParkingLot(int capacity,IOwner IOwner) {
         this.capacity = capacity;
         parkObject = new ArrayList<>();
         this.IOwner = IOwner;

@@ -1,6 +1,5 @@
 package com.thoughtworks;
 
-import com.thoughtworks.Consumer.IOwner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +9,8 @@ class ParkingLotTest {
 
     @Test
     void givenParkingLotWithOneCapacity_WhenWePark_ThenShouldBeAbleToPark() throws Exception {
-        IOwner IOwner = new DummyOwner();
-        ParkingLot parkingLot = new ParkingLot(1, IOwner);
+        IOwner iOwner= new DummyOwner();
+        ParkingLot parkingLot = new ParkingLot(1,iOwner);
 
         Object vehicle = new Object();
         Assertions.assertDoesNotThrow(()->parkingLot.park(vehicle));
@@ -97,6 +96,20 @@ class ParkingLotTest {
 
         parkingLot.unPark(vehicleOne);
         Assertions.assertEquals(1,dummyOwner.freeSpace);
+    }
+
+    @Test
+    void givenParkingLotWithFullCapacity_WhenPark_ThenShouldNotifySecurityGuard() throws Exception {
+        DummySecurityGuard dummySecurityGuard = new DummySecurityGuard();
+        ParkingLot parkingLot = new ParkingLot(2,dummySecurityGuard);
+
+        Object vehicleOne = new Object();
+        Object vehicleTwo = new Object();
+
+        parkingLot.park(vehicleOne);
+        parkingLot.park(vehicleTwo);
+
+        Assertions.assertEquals(1,dummySecurityGuard.counter);
     }
 
 }

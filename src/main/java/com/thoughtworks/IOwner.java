@@ -1,4 +1,4 @@
-package com.thoughtworks.Consumer;
+package com.thoughtworks;
 
 public interface IOwner {
 

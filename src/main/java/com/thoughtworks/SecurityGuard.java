@@ -1,7 +1,8 @@
-package com.thoughtworks.Consumer;
+package com.thoughtworks;
 
-public class Owner implements IOwner{
+import com.thoughtworks.IOwner;
 
+public class SecurityGuard implements IOwner {
     @Override
     public void informFullSpace() {
 
@@ -11,4 +12,5 @@ public class Owner implements IOwner{
     public void informFreeSpace() {
 
     }
+
 }
