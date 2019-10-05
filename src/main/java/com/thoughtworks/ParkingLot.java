@@ -8,11 +8,19 @@ public class ParkingLot {
     private List<Object> parkObject;
     private int capacity;
     private IOwner IOwner;
+    private  IOwner securityGuard;
+
 
     public ParkingLot(int capacity,IOwner IOwner) {
         this.capacity = capacity;
         parkObject = new ArrayList<>();
         this.IOwner = IOwner;
+    }
+
+    public ParkingLot(int capacity,IOwner IOwner,IOwner securityGuard){
+        this.capacity = capacity;
+        this.IOwner  = IOwner;
+        this.securityGuard = securityGuard;
     }
 
     public void park(Object object) throws VehicleAlreadyAvailableException, ParkingLotException {

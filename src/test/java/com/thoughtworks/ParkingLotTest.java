@@ -128,6 +128,4 @@ class ParkingLotTest {
         Assertions.assertEquals(1,dummySecurityGuard.freeSpace);
     }
 
-
-
 }
