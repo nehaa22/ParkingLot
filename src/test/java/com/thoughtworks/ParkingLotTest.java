@@ -112,4 +112,22 @@ class ParkingLotTest {
         Assertions.assertEquals(1,dummySecurityGuard.counter);
     }
 
+    @Test
+    void givenParkingLotWithFullCapacity_WhenParkOneCar_ThenShouldNotifySecurityGuardThatSpaceIsAvailable() throws Exception {
+        DummySecurityGuard dummySecurityGuard = new DummySecurityGuard();
+        ParkingLot parkingLot = new ParkingLot(2,dummySecurityGuard);
+
+        Object vehicleOne = new Object();
+        Object vehicleTwo = new Object();
+
+        parkingLot.park(vehicleOne);
+        parkingLot.park(vehicleTwo);
+        Assertions.assertEquals(1,dummySecurityGuard.counter);
+
+        parkingLot.unPark(vehicleOne);
+        Assertions.assertEquals(1,dummySecurityGuard.freeSpace);
+    }
+
+
+
 }
