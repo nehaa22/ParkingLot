@@ -1,6 +1,6 @@
 package com.thoughtworks;
 
-import com.thoughtworks.Consumer.Owner;
+import com.thoughtworks.Consumer.IOwner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +10,8 @@ class ParkingLotTest {
 
     @Test
     void givenParkingLotWithOneCapacity_WhenWePark_ThenShouldBeAbleToPark() throws Exception {
-        Owner owner = new DummyOwner();
-        ParkingLot parkingLot = new ParkingLot(1,owner);
+        IOwner IOwner = new DummyOwner();
+        ParkingLot parkingLot = new ParkingLot(1, IOwner);
 
         Object vehicle = new Object();
         Assertions.assertDoesNotThrow(()->parkingLot.park(vehicle));
@@ -20,9 +20,9 @@ class ParkingLotTest {
 
     @Test
     void givenParkingLotWithSameObject_WhenWePark_ThenShouldThrowException() throws Exception {
-        Owner owner = new DummyOwner();
+        IOwner IOwner = new DummyOwner();
 
-        ParkingLot parkingLot = new ParkingLot(2,owner);
+        ParkingLot parkingLot = new ParkingLot(2, IOwner);
         Object vehicle = new Object();
 
         parkingLot.park(vehicle);
@@ -34,9 +34,9 @@ class ParkingLotTest {
 
     @Test
     void givenParkingLotWithFullcapacity_WhenPark_ThenShouldNotBeAbleToPark() throws Exception {
-        Owner owner = new DummyOwner();
+        IOwner IOwner = new DummyOwner();
 
-        ParkingLot parkingLot = new ParkingLot(1,owner);
+        ParkingLot parkingLot = new ParkingLot(1, IOwner);
 
         Object vehicle = new Object();
         parkingLot.park(vehicle);
@@ -48,9 +48,9 @@ class ParkingLotTest {
 
     @Test
     void givenParkingLotWithOneCapacity_WhenParkOneVehicleAndUnParkIt_ThenShouldBeAbleToUnParkIt() throws Exception {
-        Owner owner = new DummyOwner();
+        IOwner IOwner = new DummyOwner();
 
-        ParkingLot parkingLot = new ParkingLot(1,owner);
+        ParkingLot parkingLot = new ParkingLot(1, IOwner);
 
         Object vehicle = new Object();
         parkingLot.park(vehicle);
@@ -60,9 +60,9 @@ class ParkingLotTest {
 
     @Test
     void givenParkingLot_WhenUnParkOneVehicleWithoutPark_ThenShouldNotBeAbleToUnParkIt() throws ParkingLotException {
-        Owner owner = new DummyOwner();
+        IOwner IOwner = new DummyOwner();
 
-        ParkingLot parkingLot = new ParkingLot(1,owner);
+        ParkingLot parkingLot = new ParkingLot(1, IOwner);
         Object vehicle = new Object();
         assertThrows(VehicleAlreadyAvailableException.class, () -> {
             parkingLot.unPark(vehicle);

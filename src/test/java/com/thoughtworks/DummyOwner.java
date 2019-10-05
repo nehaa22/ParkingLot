@@ -1,8 +1,8 @@
 package com.thoughtworks;
 
-import com.thoughtworks.Consumer.Owner;
+import com.thoughtworks.Consumer.IOwner;
 
-class DummyOwner implements Owner {
+class DummyOwner implements IOwner {
     int counter = 0;
     int freeSpace = 0;
 

@@ -1,6 +1,6 @@
 package com.thoughtworks;
 
-import com.thoughtworks.Consumer.Owner;
+import com.thoughtworks.Consumer.IOwner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +9,12 @@ public class ParkingLot {
 
     private List<Object> parkObject;
     private int capacity;
-    private Owner owner;
+    private IOwner IOwner;
 
-    public ParkingLot(int capacity, Owner owner) {
+    public ParkingLot(int capacity, IOwner IOwner) {
         this.capacity = capacity;
         parkObject = new ArrayList<>();
-        this.owner = owner;
+        this.IOwner = IOwner;
     }
 
     public void park(Object object) throws VehicleAlreadyAvailableException, ParkingLotException {
@@ -25,7 +25,7 @@ public class ParkingLot {
             }
             parkObject.add(object);
             if (isFull()) {
-                owner.informFullSpace();
+                IOwner.informFullSpace();
             }
         } else {
             throw new ParkingLotException();
@@ -49,7 +49,7 @@ public class ParkingLot {
         if (isAlreadyParked(object)) {
             parkObject.remove(object);
             if (parkObject.size() == capacity - 1) {
-                owner.informFreeSpace();
+                IOwner.informFreeSpace();
             }
             return object;
         }
