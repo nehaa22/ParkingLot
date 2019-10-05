@@ -2,10 +2,11 @@ package com.thoughtworks.Consumer;
 
 import com.thoughtworks.ParkingLot;
 import com.thoughtworks.ParkingLotException;
+import com.thoughtworks.VehicleAlreadyAvailableException;
 
 public class Sanjay {
 
-    public static void park(ParkingLot parkingLotOne, ParkingLot parkingLotTwo) throws ParkingLotException {
+    public static void park(ParkingLot parkingLotOne, ParkingLot parkingLotTwo) throws Exception {
 
         try {
             System.out.println("park to parkingLotOne");
@@ -43,17 +44,17 @@ public class Sanjay {
       Object vehical= parkingLotTwo.unPark(C);
       System.out.println("Unparked " + C);
 
-      try {
-          Object vehical2 = parkingLotTwo.unPark(C);
-      }catch (ParkingLotException e){
-          System.out.println("exception :"+"  "+e.getMessage());
-      }
+//      try {
+//          Object vehical2 = parkingLotTwo.unPark(C);
+//      }catch VehicleAlreadyAvailableException() {
+//
+//      }
 
     }
 
-    public static void main(String[] args) throws ParkingLotException {
-        Owner owner = new Owner();
-
-        park(new ParkingLot(2,owner), new ParkingLot(3,owner));
-    }
+//    public static void main(String[] args) throws Exception {
+//        Owner owner = new DummyOwner();
+//
+//        park(new ParkingLot(2,owner), new ParkingLot(3,owner));
+//    }
 }

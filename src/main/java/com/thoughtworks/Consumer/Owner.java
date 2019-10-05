@@ -1,7 +1,8 @@
 package com.thoughtworks.Consumer;
 
-public class Owner {
-    public void informFullSpace(){ }
+public interface Owner {
 
-    public  void informFreeSpace(){}
+    public void informFullSpace();
+
+    public  void informFreeSpace();
 }
