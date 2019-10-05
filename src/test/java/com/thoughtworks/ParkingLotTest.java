@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotTest {
 
-    @Test // TODO - test is incomplete - there is not parking done.
+    @Test
     void givenParkingLotWithOneCapacity_WhenWePark_ThenShouldBeAbleToPark() throws Exception {
         Owner owner = new DummyOwner();
         ParkingLot parkingLot = new ParkingLot(1,owner);
