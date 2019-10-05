@@ -5,21 +5,18 @@ import java.util.List;
 
 public class ParkingLot {
 
+    private List<Object> observer = new ArrayList<>();
+
     private List<Object> parkObject;
     private int capacity;
     private IOwner IOwner;
     private  IOwner securityGuard;
 
-
-    public ParkingLot(int capacity,IOwner IOwner) {
-        this.capacity = capacity;
-        parkObject = new ArrayList<>();
-        this.IOwner = IOwner;
-    }
-
     public ParkingLot(int capacity,IOwner IOwner,IOwner securityGuard){
         this.capacity = capacity;
         this.IOwner  = IOwner;
+        parkObject = new ArrayList<>();
+
         this.securityGuard = securityGuard;
     }
 
@@ -32,6 +29,7 @@ public class ParkingLot {
             parkObject.add(object);
             if (isFull()) {
                 IOwner.informFullSpace();
+                securityGuard.informFullSpace();
             }
         } else {
             throw new ParkingLotException();
@@ -56,6 +54,7 @@ public class ParkingLot {
             parkObject.remove(object);
             if (parkObject.size() == capacity - 1) {
                 IOwner.informFreeSpace();
+                securityGuard.informFreeSpace();
             }
             return object;
         }
