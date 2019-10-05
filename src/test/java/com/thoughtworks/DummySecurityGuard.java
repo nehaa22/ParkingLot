@@ -1,6 +1,6 @@
 package com.thoughtworks;
 
-public class DummySecurityGuard implements IOwner {
+public class DummySecurityGuard implements Subscribers {
     int counter = 0;
     int freeSpace = 0;
 

@@ -5,19 +5,16 @@ import java.util.List;
 
 public class ParkingLot {
 
-    private List<Object> observer = new ArrayList<>();
-
     private List<Object> parkObject;
     private int capacity;
-    private IOwner IOwner;
-    private  IOwner securityGuard;
+    private Subscribers IOwner;
+    private Subscribers securityGuard;
+    private List<Subscribers> observer;
 
-    public ParkingLot(int capacity,IOwner IOwner,IOwner securityGuard){
-        this.capacity = capacity;
-        this.IOwner  = IOwner;
+    public ParkingLot(int capacity, List<Subscribers> observer){
         parkObject = new ArrayList<>();
-
-        this.securityGuard = securityGuard;
+        this.capacity = capacity;
+        this.observer = observer;
     }
 
     public void park(Object object) throws VehicleAlreadyAvailableException, ParkingLotException {
@@ -28,8 +25,9 @@ public class ParkingLot {
             }
             parkObject.add(object);
             if (isFull()) {
-                IOwner.informFullSpace();
-                securityGuard.informFullSpace();
+                for (Subscribers type: observer) {
+                    type.informFullSpace();
+                }
             }
         } else {
             throw new ParkingLotException();
@@ -53,8 +51,9 @@ public class ParkingLot {
         if (isAlreadyParked(object)) {
             parkObject.remove(object);
             if (parkObject.size() == capacity - 1) {
-                IOwner.informFreeSpace();
-                securityGuard.informFreeSpace();
+                for (Subscribers type: observer) {
+                    type.informFreeSpace();
+                }
             }
             return object;
         }

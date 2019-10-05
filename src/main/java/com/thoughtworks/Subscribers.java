@@ -1,6 +1,6 @@
 package com.thoughtworks;
 
-public interface IOwner {
+public interface Subscribers {
 
     public void informFullSpace();
 

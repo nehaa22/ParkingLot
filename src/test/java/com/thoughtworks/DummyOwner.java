@@ -1,6 +1,6 @@
 package com.thoughtworks;
 
-class DummyOwner implements IOwner {
+class DummyOwner implements Subscribers {
     int counter = 0;
     int freeSpace = 0;
 
