@@ -7,8 +7,6 @@ public class ParkingLot {
 
     private List<Object> parkObject;
     private int capacity;
-    private Subscribers IOwner;
-    private Subscribers securityGuard;
     private List<Subscribers> observer;
 
     public ParkingLot(int capacity, List<Subscribers> observer){

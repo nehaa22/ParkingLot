@@ -1,8 +1,8 @@
 package com.thoughtworks;
 
-public interface Subscribers {
+public interface Subscribers { // TODO - singular
 
-    public void informFullSpace();
+    public void informFullSpace(); // TODO - access modifiers
 
     public  void informFreeSpace();
 }
